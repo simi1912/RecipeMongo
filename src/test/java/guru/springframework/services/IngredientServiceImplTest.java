@@ -10,6 +10,7 @@ import guru.springframework.domain.Recipe;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -51,6 +52,7 @@ public class IngredientServiceImplTest {
     public void findByRecipeIdAndId() throws Exception {
     }
 
+    @Ignore
     @Test
     public void findByRecipeIdAndReceipeIdHappyPath() throws Exception {
         //given
