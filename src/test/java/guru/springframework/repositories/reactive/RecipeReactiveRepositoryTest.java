@@ -18,12 +18,12 @@ public class RecipeReactiveRepositoryTest {
     RecipeReactiveRepository recipeReactiveRepository;
 
     @Before
-    public void setUp(){
+    public void setUp() throws Exception {
         recipeReactiveRepository.deleteAll().block();
     }
 
     @Test
-    public void testRecipeSave(){
+    public void testRecipeSave() throws Exception {
         Recipe recipe = new Recipe();
         recipe.setDescription("Yummy");
 
@@ -31,7 +31,6 @@ public class RecipeReactiveRepositoryTest {
 
         Long count = recipeReactiveRepository.count().block();
 
-        assertEquals(Long.valueOf(1), count);
+        assertEquals(Long.valueOf(1L), count);
     }
-
 }

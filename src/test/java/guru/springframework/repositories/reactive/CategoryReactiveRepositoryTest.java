@@ -19,24 +19,24 @@ public class CategoryReactiveRepositoryTest {
     CategoryReactiveRepository categoryReactiveRepository;
 
     @Before
-    public void setUp(){
+    public void setUp() throws Exception {
         categoryReactiveRepository.deleteAll().block();
     }
 
     @Test
-    public void  testSave(){
+    public void testSave() throws Exception {
         Category category = new Category();
-        category.setDescription("foo");
+        category.setDescription("Foo");
 
         categoryReactiveRepository.save(category).block();
 
-        Long count  = Long.valueOf(1);
+        Long count = categoryReactiveRepository.count().block();
 
-        assertEquals(count, categoryReactiveRepository.count().block());
+        assertEquals(Long.valueOf(1L), count);
     }
 
     @Test
-    public void testFindByDescription(){
+    public void testFindByDescription() throws Exception {
         Category category = new Category();
         category.setDescription("Foo");
 

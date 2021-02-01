@@ -20,32 +20,33 @@ public class UnitOfMeasureReactiveRepositoryTest {
     UnitOfMeasureReactiveRepository unitOfMeasureReactiveRepository;
 
     @Before
-    public void setUp(){
+    public void setUp() throws Exception {
         unitOfMeasureReactiveRepository.deleteAll().block();
     }
 
     @Test
-    public void testSaveUom(){
+    public void testSaveUom() throws Exception {
         UnitOfMeasure uom = new UnitOfMeasure();
-        uom.setDescription(EACH);;
+        uom.setDescription(EACH);
 
         unitOfMeasureReactiveRepository.save(uom).block();
 
         Long count = unitOfMeasureReactiveRepository.count().block();
 
-        assertEquals(Long.valueOf(1), count);
+        assertEquals(Long.valueOf(1L), count);
+
     }
 
     @Test
-    public void testFindByDescription() {
+    public void testFindByDescription() throws Exception {
         UnitOfMeasure uom = new UnitOfMeasure();
-        uom.setDescription(EACH);;
+        uom.setDescription(EACH);
 
         unitOfMeasureReactiveRepository.save(uom).block();
 
-        UnitOfMeasure fetchedUom = unitOfMeasureReactiveRepository.findByDescription(EACH).block();
+        UnitOfMeasure fetchedUOM = unitOfMeasureReactiveRepository.findByDescription(EACH).block();
 
-        assertEquals(EACH, fetchedUom.getDescription());
+        assertEquals(EACH, fetchedUOM.getDescription());
+
     }
-
 }

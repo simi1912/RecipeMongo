@@ -57,6 +57,7 @@ public class RecipeServiceImplTest {
         verify(recipeReactiveRepository, never()).findAll();
     }
 
+
     @Test
     public void getRecipeCommandByIdTest() throws Exception {
         Recipe recipe = new Recipe();
@@ -98,10 +99,10 @@ public class RecipeServiceImplTest {
         //given
         String idToDelete = "2";
 
+        when(recipeReactiveRepository.deleteById(anyString())).thenReturn(Mono.empty());
+
         //when
         recipeService.deleteById(idToDelete);
-
-        //no 'when', since method has void return type
 
         //then
         verify(recipeReactiveRepository, times(1)).deleteById(anyString());
